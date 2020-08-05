@@ -1,0 +1,60 @@
+{
+  "name": "@ngnjs/libnet-node",
+  "version": "1.0.0-beta",
+  "description": "A plugin module for NGN.",
+  "type": "module",
+  "author": "Corey Butler\n",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/<owner>/<repo>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<owner>/<repo>.git"
+  },
+  "bugs": {
+    "url": "https://github.com/<owner>/<repo>/issues"
+  },
+  "main": "src/index.js",
+  "peerDependencies": {
+    "@ngnjs/libdata": "^1.0.0-alpha",
+    "@author.io/dev": "^1.0.26"
+  },
+  "scripts": {
+    "test": "npm run test:node && npm run report:syntax && npm run report:size",
+    "start": "dev workspace",
+    "build": "dev build",
+    "test:node": "dev test -rt node tests/*.js",
+    "report:syntax": "dev report syntax --pretty",
+    "report:size": "dev report size ./.dist/**/*.js ./.dist/**/*.js.map",
+    "report:compat": "dev report compatibility ./src/**/*.js",
+    "report:preview": "npm pack --dry-run && echo \"==============================\" && echo \"This report shows what will be published to the module registry. Pay attention to the tarball contents and assure no sensitive files will be published.\"",
+    "update": "npm update --save --save-dev --save-optional"
+  },
+  "dev": {
+    "mode": "source",
+    "volume": [
+      "/Users/cbutler/Workspace/OSS/js/@author.io/dev/image/app/test/aliases.js:/utility/test/aliases.js",
+      "/Users/cbutler/Workspace/OSS/js/@author.io/dev/image/app/test/TapParser.js:/utility/test/TapParser.js",
+      "/Users/cbutler/Workspace/OSS/js/@author.io/dev/image/runners/node.js:/utility/test/run-node.js",
+      "../core/.dist/ngn:/node_modules/ngn",
+      "../core/src:/source/ngn",
+      "../plugin/.dist/plugin:/node_modules/@ngnjs/plugin",
+      "../plugin/src:/source/@ngnjs/plugin",
+      "../libdata/src:/source/@ngnjs/libdata",
+      "../libdata/.dist/libdata:/node_modules/@ngnjs/libdata"
+    ],
+    "http_server": "./tests/assets/server.js",
+    "source": {
+      "alias": {
+        "@ngnjs/libnet-node": "/app/src/index.js"
+      }
+    }
+  },
+  "standard": {
+    "globals": [
+      "globalThis",
+      "window",
+      "global"
+    ]
+  }
+}
