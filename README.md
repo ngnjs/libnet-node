@@ -1,4 +1,4 @@
-# "libnet-node" NGN Plugin
+<h1 align="center">@ngnjs/libnet-node<br/><img src="https://img.shields.io/npm/v/@ngnjs/libnet-node?label=%40ngnjs%2Flibnet-node&logo=npm&style=social"/></h1>
 
 This module polyfills network request features normally only found in non-Node runtimes:
 

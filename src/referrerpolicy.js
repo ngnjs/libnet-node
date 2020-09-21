@@ -36,6 +36,9 @@ export default class ReferrerPolicy {
     }
 
     if (!(url instanceof URL)) {
+      if (!/^\w+:/i.test(url)) {
+        url = `http://${url}`
+      }
       url = new URL(url)
     }
 
@@ -47,8 +50,17 @@ export default class ReferrerPolicy {
     return `${url.protocol}//${url.host}` + (!originonly ? `${url.pathname}${url.search}` : '')
   }
 
+  /**
+   * @param {string|URL} from
+   * The location from which the request is being made.
+   * @param {string|URL} to
+   * The destination address.
+   * @return {string}
+   * The referrer URL to use in HTTP headers. This will be
+   * `null` if no referrer is available.
+   */
   referrerURL (from, to) {
-    if (this.#policy === 'no-referrer') {
+    if (this.#policy === 'no-referrer' || !from || !to) {
       return null
     }
 
