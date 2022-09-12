@@ -1,6 +1,6 @@
 {
   "name": "@ngnjs/libnet-node",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.1",
   "description": "A plugin module for NGN.",
   "type": "module",
   "author": "Corey Butler\n",
@@ -14,7 +14,13 @@
   "bugs": {
     "url": "https://github.com/<owner>/<repo>/issues"
   },
-  "main": "src/index.js",
+  "main": "./src/index.js",
+  "module": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.js"
+    }
+  },
   "peerDependencies": {
     "ngn": "^2.0.0-alpha.5",
     "@ngnjs/plugin": ">=1.0.0-alpha.8",
